@@ -29,7 +29,7 @@ while True:
 
 
     # the shapes can be approximated better
-    """
+    
     resized = imutils.resize(frame_threshold, width=300)
     ratio = frame.shape[0] / float(resized.shape[0])
 
@@ -62,19 +62,8 @@ while True:
         cv.imshow("Image", frame_threshold)
         key=cv.waitKey(0)
         if key == ord('q') or key == 27:
-            continue"""
+            continue
 
-
-    edges = cv.Canny(frame_threshold,0.1,2,apertureSize = 3,L2gradient=True)
-    minLineLength = 10
-    maxLineGap = 10
-    lines = cv.HoughLinesP(edges,1,np.pi/180,100,minLineLength,maxLineGap)
-    for x1,y1,x2,y2 in lines[0]:
-        cv.line(frame_threshold,(x1,y1),(x2,y2),(0,255,0),2)
-
-
-    cv.imshow('houghlines5.jpg',frame_threshold)
-    cv.waitKey(0)
 
 
 

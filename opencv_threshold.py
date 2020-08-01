@@ -14,9 +14,9 @@ window_detection_name = 'Object Detection'
 low_H_name = 'Low H'
 low_S_name = 'Low S'
 low_V_name = 'Low V'
-high_H_name = 'high_H'
-high_S_name = 'high_S'
-high_V_name = 'High V'
+high_H_name = '44'
+high_S_name = '100'
+high_V_name = '96'
 def on_low_H_thresh_trackbar(val):
     global low_H
     global high_H
@@ -65,12 +65,9 @@ cv.createTrackbar(low_S_name, window_detection_name , low_S, max_value, on_low_S
 cv.createTrackbar(high_S_name, window_detection_name , high_S, max_value, on_high_S_thresh_trackbar)
 cv.createTrackbar(low_V_name, window_detection_name , low_V, max_value, on_low_V_thresh_trackbar)
 cv.createTrackbar(high_V_name, window_detection_name , high_V, max_value, on_high_V_thresh_trackbar)
-i=0
-while i!=10:
-    i=i+1
-    print(i)
+while True:
 
-    frame = cv.imread("framestop.jpeg")
+    ret, frame = cap.read()
     if frame is None:
         break
     frame_HSV = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
@@ -80,6 +77,6 @@ while i!=10:
     cv.imshow(window_capture_name, frame)
     cv.imshow(window_detection_name, frame_threshold)
 
-    key = cv.waitKey(0)
+    key = cv.waitKey(30)
     if key == ord('q') or key == 27:
         break

@@ -9,13 +9,7 @@ high_H = max_value_H*0.25
 high_S = max_value
 high_V = max_value
 cap=cv.VideoCapture("five_frames.mkv")
-frame_width = int(cap.get(3))
-frame_height = int(cap.get(4))
 
-size = (frame_width, frame_height)
-result = cv.VideoWriter('filename.avi',
-                         cv.VideoWriter_fourcc(*'MJPG'),
-                         200000000.0, size)
 while True:
     ret, frame = cap.read()
     if frame is None:
@@ -26,11 +20,10 @@ while True:
 
     cv.imshow("frame",frame)
     cv.imshow("window_detection_name", frame_threshold)
-    result.write(frame_threshold)
+    
 
     key = cv.waitKey(30)
     if key == ord('q') or key == 27:
         break
-cap.release()
-result.release()
+
 cv.destroyAllWindows()
